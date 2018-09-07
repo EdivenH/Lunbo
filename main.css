@@ -1,0 +1,23 @@
+.container-fluid{
+    width: 500px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid tomato;
+
+}
+
+.container{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 9999px;
+}
+
+img{
+    height: 200px;
+    display: block;
+    float: left;
+    width: 500px;
+    
+}

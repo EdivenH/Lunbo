@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="./main.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="container">
+			<img src="./img1.jpg" alt="img1">
+			<img src="./img2.jpg" alt="img2">
+			<img src="./img3.gif" alt="img3">
+		</div>
+	</div>
+</body>
+<script>
+
+	navigator.serviceWorker.register('./main.js', {scope: '/'}).then(function (reg) {  
+		if(reg.installing) {
+      console.log('Service worker installing');
+    } else if(reg.waiting) {
+      console.log('Service worker installed');
+    } else if(reg.active) {
+      console.log('Service worker active');
+    }
+	}).catch(function (error) {  
+		console.log('Registration failed with ' + error);
+	})
+
+	window.onload = () => {
+		
+		var container = document.querySelector('.container')
+		var imgCount = document.querySelectorAll('img').length * 500
+
+		console.log(imgCount)
+		var left = 0
+
+		window.setInterval(() => {
+			console.log(left)
+			if(left <= -imgCount){
+				console.log(imgCount)
+				left = 0;
+			}
+			
+			container.style.left = left + "px"
+			left -= 500
+		}, 1000)
+	}
+</script>
+</html>
